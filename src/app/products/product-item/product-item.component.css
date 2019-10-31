@@ -1,0 +1,24 @@
+.car{
+	border: solid 1px rgb(175, 175, 175);
+	margin-top: 20px;
+	padding: 20px;
+	width: auto;
+	background-color: 		rgb(247, 247, 247);
+	margin-bottom: 10px;	
+}
+#button2 {
+	background-color:rgb(64, 64, 64);
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	border:solid 2px;
+	border-color: rgb(64, 64, 64);
+}
+
+.book{
+	margin-top: 40px;
+	padding: 20px;
+	
+	text-align: center;
+
+}

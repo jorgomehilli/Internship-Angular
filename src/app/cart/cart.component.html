@@ -1,0 +1,25 @@
+<div class="container">
+        <div><h1 style="text-align: center; margin-top:90px;">Shopping Cart</h1></div>
+    <div class="cart">
+        <table class="table table-hover">
+            <thead>
+              <tr>  
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Medicine Value</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <app-cart-item *ngFor="let productEl of products let i=index" [product]="productEl"></app-cart-item> -->
+              <tr *ngFor="let prod of products; let i = index">
+                <td>{{prod.name}}</td>
+                <td>€ {{prod.price}}</td>
+                <td><a (click)="deleteItem(i)" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></a></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row"><div class="col-sm-6">
+            <button class="btn btn-primary" style="margin-left:10px; margin-bottom: 20px;">Purchase</button>
+    </div>
+    </div>
+</div>
