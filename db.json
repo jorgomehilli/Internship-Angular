@@ -1,0 +1,10 @@
+{
+  "produktet": [
+    { "id": 1, "name": "Ranital", "price": "14.99", "imgPath":"https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png" },
+    { "id": 2, "name": "Codiovan", "price": "9.60", "imgPath":"https://static.wixstatic.com/media/04f121_1ade7959184d417c9fa6572f1c6b2607~mv2.png/v1/fill/w_576,h_576,al_c,lg_1/04f121_1ade7959184d417c9fa6572f1c6b2607~mv2.png" }
+  ],
+
+  "shporta": [
+    { "id": 2, "name": "Codiovan", "price": "9.60", "imgPath":"https://static.wixstatic.com/media/04f121_1ade7959184d417c9fa6572f1c6b2607~mv2.png/v1/fill/w_576,h_576,al_c,lg_1/04f121_1ade7959184d417c9fa6572f1c6b2607~mv2.png" }
+  ]
+}

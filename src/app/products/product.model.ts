@@ -1,12 +1,12 @@
 export class Product{
     public name: string;
     public price: string;
-    public imagePath: string;
+    public imgPath: string;
 
     constructor(name:string, price:string,imagePath:string){
         this.name=name;
         this.price=price;
-        this.imagePath=imagePath;
+        this.imgPath=imagePath;
 
     }
 }
