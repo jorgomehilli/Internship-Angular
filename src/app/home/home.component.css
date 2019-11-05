@@ -3,15 +3,40 @@
    
 }
 .firsth1{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Comfortaa;
     font-size: 35px;
     font-weight: bold;
 }
 
 .firstp{
+    font-family: Autoradiographic Rg;
     font-size: 20px;
     max-width: 750px;
     margin-top:30px;
+}
+.animation {
+	font-family: Helvetica;
+	font-weight: bold;
+	font-size: 15px;
+	border:solid 2px;
+    border-color: rgb(21, 149, 231);
+    border-radius: 0.25em;
+	background: rgb(21, 149, 231);
+	color: white;
+	height: 50px;
+	width: 190px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+    transition: 0.5s;
+    
+   
+}
+.animation:hover {
+	color: rgb(21, 149, 231);
+	font-weight: bold;
+	border-color: (21, 149, 231);
+	background-color: transparent;
+	transition: 0.5s;
 }
 
 .background{

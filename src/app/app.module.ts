@@ -9,7 +9,6 @@ import { NavComponent } from './nav/nav.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CartService } from './cart/cart.service';
-import { CartItemComponent } from './cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     ProductsComponent,
     CartComponent,
     NavComponent,
-    ProductItemComponent,
-    CartItemComponent
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,6 @@
-<div style="margin-top:70px;"class="container">
-<app-product-item *ngFor="let productEl of products" [product]="productEl"></app-product-item>
+<div style="margin-top:70px;" class="container">
+    <div style=" border-bottom: dotted 2px rgb(175, 175, 175);">
+    <h1 class="firsth1"><span style="color: rgb(21, 149, 231);">O</span>ur Products</h1>
+    </div>
+    <app-product-item *ngFor="let productEl of products let i = index" [product]="productEl"></app-product-item>
 </div>

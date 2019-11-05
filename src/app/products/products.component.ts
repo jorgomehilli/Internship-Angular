@@ -7,21 +7,21 @@ import { ProductsService } from './products.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers:[ProductsService] 
+  providers: [ProductsService]
 })
 export class ProductsComponent implements OnInit {
-products: Product[] = [];
+  products: Product[] = [];
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.recieveData().subscribe((produktet: Product[]) =>{
-      this.products = produktet;  
-      console.log(this.products);
-    },error => {
+    this.productsService.recieveData().subscribe((productsResponse: Product[]) => {
+      this.products = productsResponse;
+      console.log(productsResponse);
+    }, error => {
       console.log(error);
     })
   };
-  }
+}
 
 

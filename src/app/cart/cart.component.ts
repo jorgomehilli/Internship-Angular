@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
 import { Product } from '../products/product.model';
 
@@ -7,16 +7,23 @@ import { Product } from '../products/product.model';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
 export class CartComponent implements OnInit {
   private products: Product[];
 
-  constructor(private cart: CartService) { }
+  constructor(private cartService: CartService) { };
 
   ngOnInit() {
-   this.products=this.cart.getProducts();
+    this.cartService.getProducts().subscribe((recieveData: Product[]) => { this.products = recieveData; console.log(this.products) });
   }
-  deleteItem(index:number){
-this.cart.DeleteItemFromCart(index);
+
+  deleteItem(index: number) {
+    this.cartService.deleteItemFromCart(this.products[index]).subscribe( () => { this.products.splice(index, 1);
+       console.log("Succesfully deleted item"); },
+      error => {
+        console.log(error);
+      });
+
   }
 
 }

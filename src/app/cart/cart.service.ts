@@ -1,27 +1,26 @@
 import { Product } from '../products/product.model';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-export class CartService{
 
-    private cart_products: Product[] = [];
-    
-    getProducts(){
-        return this.cart_products;
+@Injectable()
+export class CartService {
+    constructor(private http: HttpClient) { };
+
+    getProducts() {
+        return this.http.get<Product[]>('http://localhost:3000/cart');
     }
 
-    AddToCart(p:Product){ 
-        this.cart_products.push(p); 
-    }
-
-    DeleteItemFromCart(i:number){
-        this.cart_products.splice(i,1);
+    addItemToCart(p: Product) {
+        this.http.post<Product>('http://localhost:3000/cart', p)
+            .subscribe(postData => { console.log(postData) });
 
     }
-    Purchase(){
-        let shuma;
-     
-        for(let i=0;i<this.cart_products.length;i++){
-          shuma = shuma + this.cart_products[i].price;
-      }
-        
+
+    deleteItemFromCart(p: Product): Observable<void> {
+        return this.http.delete<void>(`http://localhost:3000/cart/${p.id}`);
     }
+
+
 }
