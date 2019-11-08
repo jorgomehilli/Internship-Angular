@@ -9,6 +9,7 @@ import { NavComponent } from './nav/nav.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CartService } from './cart/cart.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CartService } from './cart/cart.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CartService],
   bootstrap: [AppComponent]

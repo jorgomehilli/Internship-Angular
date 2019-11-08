@@ -4,8 +4,7 @@ export class Product{
     public price: string;
     public imgPath: string;
 
-    constructor(id: number, name:string, price:string, imagePath:string){
-        this.id = id;
+    constructor(name:string, price:string, imagePath:string){
         this.name = name;
         this.price = price;
         this.imgPath = imagePath;

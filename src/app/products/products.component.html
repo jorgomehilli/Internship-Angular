@@ -1,6 +1,32 @@
 <div style="margin-top:70px;" class="container">
     <div style=" border-bottom: dotted 2px rgb(175, 175, 175);">
-    <h1 class="firsth1"><span style="color: rgb(21, 149, 231);">O</span>ur Products</h1>
+        <h1 class="firsth1"><span style="color: rgb(21, 149, 231);">O</span>ur Products</h1>
     </div>
-    <app-product-item *ngFor="let productEl of products let i = index" [product]="productEl"></app-product-item>
+    <div class="row">
+        <div class="col-sm-3 create-form">
+            <form (ngSubmit)="onSubmit()" #f="ngForm" (productChanged)="updateProduct($event)">
+                <div class="form-group">
+                    <label for="name">Product Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Product Name" name="name"
+                        [(ngModel)]="newProduct.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" class="form-control" placeholder="Enter Product Price" name="price"
+                        [(ngModel)]="newProduct.price" required>
+                </div>
+                <div class="form-group">
+                    <label for="img">ImagePath:</label>
+                    <input type="text" class="form-control" placeholder="Enter Image Url" name="imgPath"
+                        [(ngModel)]="newProduct.imgPath" required>
+                </div>
+
+                <button [disabled]="!f.valid" type="submit" class="btn btn-default">Submit</button>
+                <button [disabled]="!f.valid" class="btn btn-default" (click)="updateProduct()">Edit</button>
+            </form>
+        </div>
+        <div class="col-sm-9">
+            <app-product-item (productDeleted)="deleteProduct($event)" *ngFor="let productEl of products let i = index" [product]="productEl"></app-product-item>
+        </div>
+    </div>
 </div>

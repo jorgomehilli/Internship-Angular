@@ -1,4 +1,4 @@
-.car{
+.cart-item{
 	border: solid 1px rgb(175, 175, 175);
 	margin-top: 20px;
 	padding: 20px;
@@ -31,7 +31,7 @@
 .book{
 	margin-top: 40px;
 	padding: 20px;
-	
+	vertical-align: middle;
 	text-align: center;
 
 }
