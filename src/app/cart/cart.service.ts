@@ -14,7 +14,7 @@ export class CartService {
 
     addItemToCart(p: Product) {
         this.http.post<Product>('http://localhost:3000/cart', p)
-            .subscribe(postData => { console.log(postData) });
+            .subscribe(postData => { alert("You added "+ postData.name +" to the shopping cart!") });
 
     }
 

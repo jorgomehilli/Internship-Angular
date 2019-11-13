@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from './product.model';
 import { ProductsService } from './products.service';
 
@@ -25,27 +25,38 @@ export class ProductsComponent implements OnInit {
 
   onSubmit() {
 
-    this.productsService.addNewProduct(this.newProduct).subscribe(dataResponse => { console.log('Product added successfully!');
+    this.productsService.addNewProduct(this.newProduct).subscribe(dataResponse => {
+      console.log('Product added successfully!');
       this.productsService.recieveData().subscribe((productsResponse: Product[]) => { this.products = productsResponse });
 
     },
       error => { console.log(error) });
 
   }
-  deleteProduct(p: Product) {
+  deleteProduct(p: Product, i: number) {
     this.productsService.deleteProduct(p).subscribe(() => {
-      console.log('Product deleted successfully!');
+      alert('Product deleted successfully!');
+      this.products.splice(i, 1);
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
+  getUpdatedProduct(p: Product) {
+    this.newProduct = p;
+  }
+
+  updateProduct() {
+    this.productsService.updateProduct(this.newProduct).subscribe(() => {
+      alert('Product updated successfully!');
       this.productsService.recieveData().subscribe((productsResponse: Product[]) => { this.products = productsResponse });
     });
   }
 
-  // updateProduct (p:Product){
-  //   this.newProduct=p;
-  //   this.productsService.updateProduct(p).subscribe(() => {
-  //     console.log('Product updated successfully!');
-  //     this.productsService.recieveData().subscribe((productsResponse: Product[]) => { this.products = productsResponse });
-  //   });
-  //  }
+  updateProduct1(product: Product) {
+    this.newProduct = product;
+  }
 }
 
 

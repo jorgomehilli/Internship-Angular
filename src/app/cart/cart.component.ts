@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
 
   deleteItem(index: number) {
     this.cartService.deleteItemFromCart(this.products[index]).subscribe( () => { this.products.splice(index, 1);
-       console.log("Succesfully deleted item"); },
+       alert("Succesfully removed item from cart!"); },
       error => {
         console.log(error);
       });

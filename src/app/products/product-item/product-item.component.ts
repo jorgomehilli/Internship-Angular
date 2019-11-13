@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../product.model';
 import { CartService } from 'src/app/cart/cart.service';
 import { ProductsService } from '../products.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-product-item',
@@ -13,7 +14,9 @@ export class ProductItemComponent implements OnInit {
   @Output() productDeleted = new EventEmitter<Product>();
   @Output() productChanged = new EventEmitter<Product>();
 
-  constructor(private cartService: CartService, private productService: ProductsService) { }
+  constructor(private cartService: CartService,
+     private productService: ProductsService,
+     private authService:AuthService) { }
   ngOnInit() {
   }
 
@@ -28,5 +31,9 @@ export class ProductItemComponent implements OnInit {
 
   onUpdateProduct() {
     this.productChanged.emit(this.product);
+  }
+
+  productGetLoginState():boolean{
+    return this.authService.getState();
   }
 }
