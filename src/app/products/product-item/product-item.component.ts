@@ -36,4 +36,8 @@ export class ProductItemComponent implements OnInit {
   productGetLoginState():boolean{
     return this.authService.getState();
   }
+
+  getAuthRole(){
+    return this.authService.getRole();
+  }
 }

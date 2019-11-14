@@ -3,8 +3,9 @@
         <h1 class="firsth1"><span style="color: rgb(21, 149, 231);">O</span>ur Products</h1>
     </div>
     <div class="row">
-        <div class="col-sm-3 create-form">
-            <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div  class="col-sm-3">
+        <div class=" create-form" *ngIf="getAuthRole()=='admin'">
+            <form  (ngSubmit)="onSubmit()" #f="ngForm">
                 <div class="form-group">
                     <label for="name">Product Name:</label>
                     <input type="text" class="form-control" placeholder="Enter Product Name" name="name"
@@ -26,6 +27,8 @@
 
             </form>
         </div>
+        </div>
+
         <div class="col-sm-9">
             <app-product-item 
             (productDeleted)="deleteProduct($event,i)"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product.model';
 import { ProductsService } from './products.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,8 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   newProduct: Product = new Product("", "", "");
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.productsService.recieveData().subscribe((productsResponse: Product[]) => {
@@ -56,6 +58,11 @@ export class ProductsComponent implements OnInit {
 
   updateProduct1(product: Product) {
     this.newProduct = product;
+  }
+
+  getAuthRole(){
+
+  return this.authService.getRole();
   }
 }
 

@@ -21,8 +21,8 @@ export class SignupComponent implements OnInit {
       'firstname': new FormControl(null, Validators.required),
       'lastname': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
-
+      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      'role': new FormControl('user')
     });
   }
 
@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
     this.authService.recieveUsers().subscribe((usersResponse) => {
         if (usersResponse.filter(user => user.email === this.signupForm.value.email).length) {
-          alert("Woops, something went wrong :(");
+          alert("User with this email already exists!");
         } else {
           this.authService.signUp(this.signupForm.value).subscribe((responseData:FormGroup) => {
             console.log(responseData);

@@ -21,12 +21,6 @@
   ],
   "cart": [
     {
-      "id": 1,
-      "name": "Ranital",
-      "price": "14.99",
-      "imgPath": "https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png"
-    },
-    {
       "id": 2,
       "name": "Codiovan",
       "price": "9.60",
@@ -37,6 +31,12 @@
       "price": "4.99",
       "imgPath": "https://www.meijer.com/content/dam/meijer/product/0004/12/5082/59/0004125082595_2_A1C1_1200.png",
       "id": 3
+    },
+    {
+      "id": 1,
+      "name": "Ranital",
+      "price": "14.99",
+      "imgPath": "https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png"
     }
   ],
   "users": [
@@ -45,84 +45,24 @@
       "lastname": "Mehilli",
       "email": "test@test.com",
       "password": "12345678",
+      "role": "user",
       "id": 1
     },
     {
       "firstname": "Kristian",
       "lastname": "Sota",
       "email": "asd@asd.com",
-      "password": "asddsaaas",
+      "password": "12345678",
+      "role": "admin",
       "id": 2
     },
     {
       "firstname": "Jorgo",
       "lastname": "Mehilli",
-      "email": "test@test.com",
-      "password": "asdasdasdaa",
-      "id": 3
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "22@22.com",
-      "password": "asdasdasdsadasdsd",
-      "id": 4
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "asd@asd.com",
-      "password": "asdasdasdasa",
-      "id": 5
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "22@22.com",
-      "password": "asdasdasdasd",
-      "id": 6
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "test1@test.com",
-      "password": "11234567u8io",
-      "id": 7
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "11111@t1111.com",
-      "password": "ASDASDASDASDAS",
-      "id": 8
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "test@test.com1",
-      "password": "ASDASDASDASDASDASD",
-      "id": 9
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "test@test.comas1",
-      "password": "asdasdasdasa",
-      "id": 10
-    },
-    {
-      "firstname": "Jorgo",
-      "lastname": "Mehilli",
-      "email": "test@test.com11",
-      "password": "asdadasda",
-      "id": 11
-    },
-    {
-      "firstname": "Xhorxhi ",
-      "lastname": "Mehilli",
-      "email": "smehilli@gmail.com",
+      "email": "jorgo.mehilli@gmail.com",
       "password": "12345678",
-      "id": 12
+      "role": "user",
+      "id": 3
     }
   ]
 }

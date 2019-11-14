@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
     private isLoggedIn = false;
+    private role: string = '';
 
     constructor(private http: HttpClient) {
     }
@@ -19,22 +20,20 @@ export class AuthService {
         return this.http.post('http://localhost:3000/users', formValue);
     }
 
+
     isAuthenticated() {
 
-        const promise = new Promise(
-            (resolve, reject) => {
-                setTimeout(() => {
-                    resolve(this.isLoggedIn);
-                }, 500);
-            }
-        );
-        return promise;
+        const authObservable = Observable.create(observer => {
+            observer.next(this.isLoggedIn);
+        });
+        return authObservable;
     }
 
 
-    login() {
+    login(role: string) {
         this.isLoggedIn = true;
-        console.log(this.isLoggedIn);
+        this.role = role;
+        console.log(this.isLoggedIn, this.role);
     }
 
     logout() {
@@ -42,10 +41,13 @@ export class AuthService {
         console.log(this.isLoggedIn);
     }
 
-    getState():boolean{
+    getState(): boolean {
         return this.isLoggedIn;
     }
 
+    getRole() {
+        return this.role;
+    }
 
 
 }

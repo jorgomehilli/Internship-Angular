@@ -25,10 +25,14 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     this.authService.recieveUsers().subscribe((usersResponse) => {
-      if (usersResponse.filter(user =>
+      usersResponse = usersResponse.filter(user =>
         user.password === this.loginForm.value.password &&
-        user.email === this.loginForm.value.email).length) {
-        this.authService.login();
+        user.email === this.loginForm.value.email);
+        
+      if (usersResponse.length) {
+
+          console.log(usersResponse);
+        this.authService.login(usersResponse[0].role);
         this.router.navigate(['/home']);
         alert("Successfully logged in!");
       }

@@ -12,11 +12,12 @@
     </div>
     <div class="col-sm-4">
       <a style="cursor: pointer; float: right;" (click)="onRemoveProduct()"
-      *ngIf="productGetLoginState()">
+      *ngIf="productGetLoginState() && getAuthRole()=='admin'">
         <span class="glyphicon glyphicon-remove"></span></a>
-      <a style="cursor: pointer; float:right; margin-right: 10px;"
+      <a
+      style="cursor: pointer; float:right; margin-right: 10px;"
       (click)="onUpdateProduct()"
-      *ngIf="productGetLoginState()">
+      *ngIf="productGetLoginState() && getAuthRole()=='admin'">
         <span class="glyphicon glyphicon-edit"></span>
       </a>
       <div class="book">

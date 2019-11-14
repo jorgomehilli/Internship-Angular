@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
 
 
   getLoginState(): boolean{
- return this.authService.getState();
+    return this.authService.getState();
   }
 
   navLogout(){
