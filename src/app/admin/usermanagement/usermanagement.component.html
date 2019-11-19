@@ -1,0 +1,31 @@
+
+<div class="container">
+    <div>
+      <div style="margin-top: 90px; border-bottom: dotted 2px rgb(175, 175, 175);">
+      <h1 class="top-text" style="margin-top:90px;"><span style="color: rgb(21, 149, 231) ;">U</span>sers</h1>
+      </div>
+    </div>
+    <div class="table-style">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.role}}</td>
+            <td><a style="cursor: pointer;"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a (click)="deleteUser(i)" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>

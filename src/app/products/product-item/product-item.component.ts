@@ -3,6 +3,7 @@ import { Product } from '../product.model';
 import { CartService } from 'src/app/cart/cart.service';
 import { ProductsService } from '../products.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-product-item',
@@ -16,7 +17,8 @@ export class ProductItemComponent implements OnInit {
 
   constructor(private cartService: CartService,
      private productService: ProductsService,
-     private authService:AuthService) { }
+     private authService:AuthService,
+     private snackBar: MatSnackBar) { }
   ngOnInit() {
   }
 

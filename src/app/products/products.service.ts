@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 export class ProductsService {
     constructor(private http: HttpClient) {
     }
-
+    
     recieveData() {
         return this.http.get<Product[]>('http://localhost:3000/products');
     }
 
-    addNewProduct(p: Product): Observable<Product> {
-        return this.http.post<Product>('http://localhost:3000/products', p);
+    addNewProduct(formValue: any): Observable<Product> {
+        return this.http.post<Product>('http://localhost:3000/products', formValue);
     }
     deleteProduct(p: Product) {
         return this.http.delete(`http://localhost:3000/products/${p.id}`);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
 import { Product } from '../products/product.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-cart',
@@ -11,15 +12,21 @@ import { Product } from '../products/product.model';
 export class CartComponent implements OnInit {
   private products: Product[];
 
-  constructor(private cartService: CartService) { };
+  constructor(private cartService: CartService,
+    private snackBar: MatSnackBar
+  ) { };
 
   ngOnInit() {
     this.cartService.getProducts().subscribe((recieveData: Product[]) => { this.products = recieveData; console.log(this.products) });
   }
 
   deleteItem(index: number) {
-    this.cartService.deleteItemFromCart(this.products[index]).subscribe( () => { this.products.splice(index, 1);
-       alert("Succesfully removed item from cart!"); },
+    this.cartService.deleteItemFromCart(this.products[index]).subscribe(() => {
+      this.products.splice(index, 1);
+      this.snackBar.open('Successfully removed item from cart!', '', {
+        duration: 3000
+      });
+    },
       error => {
         console.log(error);
       });

@@ -15,6 +15,14 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
+import { UsermanagementComponent } from './admin/usermanagement/usermanagement.component';
+import { AdminGuard } from './admin/admin-guard.service';
+import { ProductmanagementComponent } from './admin/productmanagement/productmanagement.component';
+import { ProductsService } from './products/products.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { ProductsdialogComponent } from './admin/productsdialog/productsdialog.component';
 
 @NgModule({
   declarations: [
@@ -26,16 +34,25 @@ import { AuthGuard } from './auth/auth-guard.service';
     ProductItemComponent,
     AuthComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    UsermanagementComponent,
+    ProductmanagementComponent,
+    ProductsdialogComponent
   ],
+
+  entryComponents: [ProductsdialogComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
-  providers: [CartService, AuthService,AuthGuard],
+  providers: [CartService, AuthService, AuthGuard, AdminGuard, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

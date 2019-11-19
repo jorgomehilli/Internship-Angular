@@ -18,6 +18,11 @@ export class NavComponent implements OnInit {
     return this.authService.getState();
   }
 
+  getAdminState():boolean{
+    return this.authService.getAdmin();
+  }
+
+
   navLogout(){
     this.authService.logout();
   }

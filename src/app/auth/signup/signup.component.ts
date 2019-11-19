@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,8 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+    private snackBar: MatSnackBar) {
 
   }
 
@@ -26,33 +28,22 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  
+
 
   onSubmit() {
 
     this.authService.recieveUsers().subscribe((usersResponse) => {
-        if (usersResponse.filter(user => user.email === this.signupForm.value.email).length) {
-          alert("User with this email already exists!");
-        } else {
-          this.authService.signUp(this.signupForm.value).subscribe((responseData:FormGroup) => {
-            console.log(responseData);
-            alert("You have successfully registered!");
-            this.signupForm.reset();
-          })
-        }
-    })
-
-      /* this.authService.signUp(this.signupForm.value).subscribe((responseData:FormGroup) => {
-        console.log(responseData);
-        alert("You have successfully registered!");
-        this.signupForm.reset();
-      },
-        error => {
-          alert("Woops, something went wrong :(");
-        });
-      }
-          else alert("User with this email already exists!")
+      if (usersResponse.filter(user => user.email === this.signupForm.value.email).length) {
+        this.snackBar.open('User with this email already exists!','OK',{ 
+          duration: 3000});
+      } else {
+        this.authService.signUp(this.signupForm.value).subscribe((responseData: FormGroup) => {
+          console.log(responseData);
+          this.snackBar.open('You have successfully registered!','',{ 
+            duration: 3000});
           this.signupForm.reset();
-  } */
+        })
+      }
+    })
   }
 }

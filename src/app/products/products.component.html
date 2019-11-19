@@ -3,36 +3,8 @@
         <h1 class="firsth1"><span style="color: rgb(21, 149, 231);">O</span>ur Products</h1>
     </div>
     <div class="row">
-        <div  class="col-sm-3">
-        <div class=" create-form" *ngIf="getAuthRole()=='admin'">
-            <form  (ngSubmit)="onSubmit()" #f="ngForm">
-                <div class="form-group">
-                    <label for="name">Product Name:</label>
-                    <input type="text" class="form-control" placeholder="Enter Product Name" name="name"
-                        [(ngModel)]="newProduct.name" required>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="text" class="form-control" placeholder="Enter Product Price" name="price"
-                        [(ngModel)]="newProduct.price" required>
-                </div>
-                <div class="form-group">
-                    <label for="img">ImagePath:</label>
-                    <input type="text" class="form-control" placeholder="Enter Image Url" name="imgPath"
-                        [(ngModel)]="newProduct.imgPath" required>
-                </div>
-
-                <button [disabled]="!f.valid" type="submit" class="btn btn-default">Submit</button>
-                <button type="button" [disabled]="!f.valid" class="btn btn-default" (click)="updateProduct()">Edit</button>
-
-            </form>
-        </div>
-        </div>
-
-        <div class="col-sm-9">
+        <div class="col-sm-12">
             <app-product-item 
-            (productDeleted)="deleteProduct($event,i)"
-            (productChanged)="getUpdatedProduct($event)"
              *ngFor="let productEl of products let i = index" [product]="productEl">
             </app-product-item>
         </div>

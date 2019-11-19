@@ -1,0 +1,30 @@
+
+<div (productAdded)= "addProduct($event)" class="container">
+    <div>
+      <div style="margin-top: 90px; border-bottom: dotted 2px rgb(175, 175, 175);">
+      <h1 class="top-text" style="margin-top:90px;"><span style="color: rgb(21, 149, 231) ;">P</span>roducts</h1>
+      <a (click)="openDialog()" style="cursor: pointer; float: right;"><span class="glyphicon glyphicon-plus"></span></a>
+      </div>
+    </div>
+    <div class="table-style">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Medicine Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let i = index">
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td><a style="cursor: pointer;"
+               (click)="openDialog(product)"
+               ><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a (click)="deleteUser(i)" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>

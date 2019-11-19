@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthService {
 
-    private isLoggedIn = false;
+    private isLoggedIn;
     private role: string = '';
+    private isAdmin;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+        private snackBar: MatSnackBar) {
     }
 
     recieveUsers(): Observable<User[]> {
@@ -29,19 +32,47 @@ export class AuthService {
         return authObservable;
     }
 
+    isAdminObservable() {
+
+        const adminObservable = Observable.create(observer => {
+            observer.next(this.isAdmin);
+        });
+        return adminObservable;
+    }
+
+
 
     login(role: string) {
+
         this.isLoggedIn = true;
         this.role = role;
-        console.log(this.isLoggedIn, this.role);
+        localStorage.setItem('isLoggedIn',  JSON.stringify(this.isLoggedIn));
+
+        if (this.role=='admin'){
+            this.isAdmin=true;
+            localStorage.setItem('isAdmin',  JSON.stringify(this.isAdmin));
+        }
+
     }
 
     logout() {
         this.isLoggedIn = false;
-        console.log(this.isLoggedIn);
+        localStorage.removeItem('isLoggedIn');
+
+        if(localStorage.getItem('isAdmin') !== null){
+            localStorage.removeItem('isAdmin');
+            this.isAdmin=false;
+        }
+        this.snackBar.open('Successfully logged out!','',{ 
+            duration: 3000});
     }
 
     getState(): boolean {
+        if (localStorage.getItem('isLoggedIn') == null){
+            this.isLoggedIn = false;
+        } else{
+            this.isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+        }
         return this.isLoggedIn;
     }
 
@@ -49,5 +80,17 @@ export class AuthService {
         return this.role;
     }
 
+    getAdmin():boolean{
+        if (localStorage.getItem('isAdmin') == null){
+            this.isAdmin = false;
+        } else{
+            this.isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
+        }
+        
+        return this.isAdmin;
+    }
 
+    deleteUserFromDb(user: User) : Observable<void> {
+        return this.http.delete<void>(`http://localhost:3000/users/${user.id}`);
+    }
 }

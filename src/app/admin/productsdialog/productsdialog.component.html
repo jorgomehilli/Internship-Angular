@@ -1,0 +1,27 @@
+<h2 mat-dialog-title style="text-align: center;">Edit User!</h2>
+<mat-dialog-content class="create-form">
+    <form  [formGroup]="productEditForm">
+        <div class="form-group">
+            <label for="name">Product Name:</label>
+            <input type="text" class="form-control" placeholder="Enter Product Name" name="product_name"
+                formControlName="name">
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" placeholder="Enter Product Price" name="product_price"
+            formControlName="price">
+        </div>
+        <div class="form-group">
+            <label for="img">ImagePath:</label>
+            <input type="text" class="form-control" placeholder="Enter Image Url" name="product_imgPath"
+            formControlName="imgPath">
+        </div>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-dialog-close type="button" class="btn btn-default animation" (click)="updateProduct()">Edit</button>
+    <button (click)="onSubmit()" mat-dialog-close type="button" class="btn btn-default animation">Add Product</button>
+
+
+</mat-dialog-actions>

@@ -1,5 +1,5 @@
 .home{
-    padding-top :200px;
+	padding-top :140px;
    
 }
 .firsth1{
@@ -14,35 +14,13 @@
     max-width: 750px;
     margin-top:30px;
 }
-.animation {
-	font-family: Helvetica;
-	font-weight: bold;
-	font-size: 15px;
-	border:solid 2px;
-    border-color: rgb(21, 149, 231);
-    border-radius: 0.25em;
-	background: rgb(21, 149, 231);
-	color: white;
-	height: 50px;
-	width: 190px;
-	margin-top: 20px;
-	margin-bottom: 30px;
-    transition: 0.5s;
-    
-   
-}
-.animation:hover {
-	color: rgb(21, 149, 231);
-	font-weight: bold;
-	border-color: (21, 149, 231);
-	background-color: transparent;
-	transition: 0.5s;
-}
+
 
 .background{
-    background-image: url(../../img/pharmacist.jpg);
-	height: 650px;  
+	margin-top: 50px;
+    background-image: url(../../assets/img/pharmacist.jpg);
+	height: 670px; 
 	width: 100%;
 	background-repeat: no-repeat;
-	background-size: cover;    
+	background-size: cover;  
 }

@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers: [ProductsService]
+  providers: []
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -35,6 +35,7 @@ export class ProductsComponent implements OnInit {
       error => { console.log(error) });
 
   }
+  
   deleteProduct(p: Product, i: number) {
     this.productsService.deleteProduct(p).subscribe(() => {
       alert('Product deleted successfully!');

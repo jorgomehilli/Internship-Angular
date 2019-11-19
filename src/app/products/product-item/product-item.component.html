@@ -11,19 +11,10 @@
       <p>Actives: 2 mg Buprenorphine, 0.5 mg Naloxone</p>
     </div>
     <div class="col-sm-4">
-      <a style="cursor: pointer; float: right;" (click)="onRemoveProduct()"
-      *ngIf="productGetLoginState() && getAuthRole()=='admin'">
-        <span class="glyphicon glyphicon-remove"></span></a>
-      <a
-      style="cursor: pointer; float:right; margin-right: 10px;"
-      (click)="onUpdateProduct()"
-      *ngIf="productGetLoginState() && getAuthRole()=='admin'">
-        <span class="glyphicon glyphicon-edit"></span>
-      </a>
       <div class="book">
         <p style="font-family: TAHOMA; font-weight: bold;">Price Per Package:</p>
         <p style="font-family: Comfortaa">€ {{product.price}}</p>
-        <button [disabled]="!productGetLoginState()" (click)="addToCart()" class="btn btn-default animation"><span
+        <button [disabled]="!productGetLoginState()" (click)="addToCart()" class="btn animation"><span
             class="glyphicon glyphicon-shopping-cart"></span> Add To Cart!</button>
       </div>
     </div>

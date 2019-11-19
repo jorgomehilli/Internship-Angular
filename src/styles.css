@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+/* body{
+    background-image: url("./assets/img/backgroundpharma1.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.top-text{
+    font-family: Comfortaa;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table-style{
+    margin-top: 20px;
+    border:1px solid rgb(175, 175, 175);
+    background-color: rgb(255, 255, 255);
+}
+
+.animation {
+	font-family: Helvetica;
+	font-weight: bold;
+	font-size: 15px;
+	border:solid 2px;
+    border-color: rgb(21, 149, 231);
+    border-radius: 0.25em;
+	background: rgb(21, 149, 231);
+	color: white;
+	height: 50px;
+	width: 190px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+    transition: 0.5s;
+    
+   
+}
+.animation:hover {
+	color: rgb(21, 149, 231);
+	font-weight: bold;
+	border-color: (21, 149, 231);
+	background-color: transparent;
+	transition: 0.5s;
+}
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
