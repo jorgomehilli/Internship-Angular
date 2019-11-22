@@ -22,7 +22,8 @@ import { ProductmanagementComponent } from './admin/productmanagement/productman
 import { ProductsService } from './products/products.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { ProductsdialogComponent } from './admin/productsdialog/productsdialog.component';
+import { ProductsdialogComponent } from './admin/productmanagement/productsdialog/productsdialog.component';
+import { UsersdialogComponent } from './admin/usermanagement/usersdialog/usersdialog.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +39,12 @@ import { ProductsdialogComponent } from './admin/productsdialog/productsdialog.c
     AdminComponent,
     UsermanagementComponent,
     ProductmanagementComponent,
-    ProductsdialogComponent
+    ProductsdialogComponent,
+    UsersdialogComponent
   ],
 
-  entryComponents: [ProductsdialogComponent],
+  entryComponents: [ProductsdialogComponent,
+  UsersdialogComponent],
 
   imports: [
     BrowserModule,

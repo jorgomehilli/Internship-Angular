@@ -1,4 +1,5 @@
-<h2 mat-dialog-title style="text-align: center;">Edit User!</h2>
+<button (click)="onClose()" class="btn btn-primary btn-sm pull-right">X</button>
+<h2 mat-dialog-title style="text-align: center;">{{isUpdate? 'Edit': 'Add'}} Product!</h2>
 <mat-dialog-content class="create-form">
     <form  [formGroup]="productEditForm">
         <div class="form-group">
@@ -20,8 +21,7 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-dialog-close type="button" class="btn btn-default animation" (click)="updateProduct()">Edit</button>
-    <button (click)="onSubmit()" mat-dialog-close type="button" class="btn btn-default animation">Add Product</button>
+    <button type="button" (click)="onSubmit()" class="animation">{{isUpdate ? 'Edit Product': 'Add Product'}}</button>
 
 
 </mat-dialog-actions>

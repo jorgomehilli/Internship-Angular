@@ -1,5 +1,5 @@
 /* body{
-    background-image: url("./assets/img/backgroundpharma1.jpg");
+    background-image: url("./assets/img//backgroundpharma2.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,7 +42,9 @@
 	background-color: transparent;
 	transition: 0.5s;
 }
+
+  
+
 html, body { height: 100%; }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/auth/user.model';
 import { AuthService } from 'src/app/auth/auth.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { UsersdialogComponent } from './usersdialog/usersdialog.component';
 
 @Component({
   selector: 'app-usermanagement',
@@ -10,25 +11,58 @@ import { MatSnackBar } from '@angular/material';
 })
 export class UsermanagementComponent implements OnInit {
 
-  private users: User[]=[];  
+  private users: User[] = [];
 
   constructor(private authService: AuthService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.authService.recieveUsers().subscribe((usersResponse:User[])=>{
-      this.users=usersResponse;
-  });
+    this.authService.recieveUsers().subscribe((usersResponse: User[]) => {
+      this.users = usersResponse;
+    });
 
-}
+  }
 
-deleteUser(index){
-  this.authService.deleteUserFromDb(this.users[index]).subscribe(()=>{
-    this.users.splice(index, 1);
-    this.snackBar.open('Successfully removed user!','',{ 
-      duration: 3000});  },
-  error =>{console.log(error);});
-}
+
+  addUser() {
+    let dialogRef = this.dialog.open(UsersdialogComponent, {
+      width: '40%'
+    });
+
+    dialogRef.afterClosed().subscribe(changed => {
+      if (changed) {
+        this.authService.recieveUsers()
+          .subscribe(data => this.users = data);
+      }
+    });
+  }
+  
+  updateUser(user: any){
+    let dialogRef =this.dialog.open(UsersdialogComponent, {
+      width: '40%',
+      data: user
+    });
+    
+    dialogRef.afterClosed().subscribe(changed => {
+      if (changed) {
+        this.authService.recieveUsers()
+        .subscribe(data => this.users = data);
+      }
+    });
+  }
+
+  
+
+  deleteUser(index) {
+    this.authService.deleteUserFromDb(this.users[index]).subscribe(() => {
+      this.users.splice(index, 1);
+      this.snackBar.open('Successfully removed user!', '', {
+        duration: 3000
+      });
+    },
+      error => { console.log(error); });
+  }
 
 }
 

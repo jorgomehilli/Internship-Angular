@@ -23,9 +23,11 @@
             <td>{{user.lastname}}</td>
             <td>{{user.email}}</td>
             <td>{{user.role}}</td>
-            <td><a style="cursor: pointer;"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a (click)="updateUser(user)" style="cursor: pointer;"><span class="glyphicon glyphicon-edit"></span></a></td>
             <td><a (click)="deleteUser(i)" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></a></td>
           </tr>
         </tbody>
+        <button class="btn btn-primary" style="margin: 10px;" type="button" (click)="addUser()">Add User
+        </button>
       </table>
       </div>

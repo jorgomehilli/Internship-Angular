@@ -93,4 +93,9 @@ export class AuthService {
     deleteUserFromDb(user: User) : Observable<void> {
         return this.http.delete<void>(`http://localhost:3000/users/${user.id}`);
     }
+
+    updateUser(user: any) {
+        return this.http.put<any>(`http://localhost:3000/users/${user.id}`, user);
+    }
+
 }

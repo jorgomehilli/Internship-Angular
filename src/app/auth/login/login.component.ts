@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { map, filter } from 'rxjs/operators';
+import { UsersdialogComponent } from 'src/app/admin/usermanagement/usersdialog/usersdialog.component';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,8 @@ import { MatSnackBar } from '@angular/material';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  test: any;
+
   constructor(private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar) { }
@@ -30,30 +35,46 @@ export class LoginComponent implements OnInit {
       usersResponse = usersResponse.filter(user =>
         user.password === this.loginForm.value.password &&
         user.email === this.loginForm.value.email);
-        
+
       if (usersResponse.length) {
 
-          console.log(usersResponse);
+        console.log(usersResponse);
         this.authService.login(usersResponse[0].role);
 
-        if(usersResponse[0].role=="admin"){
+        if (usersResponse[0].role == "admin") {
           this.router.navigate(['/admin/users']);
-          this.snackBar.open('Successfully logged in as admin!','',{ 
-            duration: 3000});
+          this.snackBar.open('Successfully logged in as admin!', '', {
+            duration: 3000
+          });
         }
 
-        else{
+        else {
           this.router.navigate(['/home']);
-          this.snackBar.open('Successfully logged in!','',{ 
-            duration: 3000});
+          this.snackBar.open('Successfully logged in!', '', {
+            duration: 3000
+          });
         }
-        
+
       }
-      else this.snackBar.open('Wrong email or password!','OK',{ 
-        duration: 3000});
+      else this.snackBar.open('Wrong email or password!', 'OK', {
+        duration: 3000
+      });
 
     });
   }
 
+
+  filterUsers() {
+    let filteredName: string;
+
+    this.test = this.authService.recieveUsers().pipe(
+      map(users => {
+        filteredName = users.filter(u => {
+          return u.role === 'user';
+        })[0].firstname;
+      }),
+      map(() =>   filteredName)
+      );
+  }
 
 }
