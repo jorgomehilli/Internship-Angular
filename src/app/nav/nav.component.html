@@ -21,7 +21,6 @@
             class="smoothScroll">PRODUCTS</a></li>
         <li *ngIf="getLoginState()"><a (click)="navLogout()" routerLink="/home"> LOGOUT <span
               class="glyphicon glyphicon-off"></span></a></li>
-
         <li *ngIf="!getLoginState()" routerLinkActive="active"><a routerLink="/login"> Sign In <span
               class="glyphicon glyphicon-user"></span></a></li>
       </ul>

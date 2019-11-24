@@ -1,9 +1,9 @@
-/* body{
-    background-image: url("./assets/img//backgroundpharma2.jpg");
+body{
+    background: url("./assets/img/backgroundpharma1.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-} */
+}
 
 .top-text{
     font-family: Comfortaa;
@@ -28,7 +28,7 @@
 	background: rgb(21, 149, 231);
 	color: white;
 	height: 50px;
-	width: 190px;
+	width: 180px;
 	margin-top: 20px;
 	margin-bottom: 30px;
     transition: 0.5s;
@@ -41,6 +41,19 @@
 	border-color: (21, 149, 231);
 	background-color: transparent;
 	transition: 0.5s;
+}
+
+
+.whiteDiv{
+	background-color: rgb(247, 247, 247, 0.90);
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+	margin-top: 80px;
+	border-radius: 0.25em;
+	border: solid 1px rgb(184, 184, 184);
+
 }
 
   

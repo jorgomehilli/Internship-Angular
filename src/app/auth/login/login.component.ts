@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       if (usersResponse.length) {
 
         console.log(usersResponse);
-        this.authService.login(usersResponse[0].role);
+        this.authService.login(usersResponse[0]);
 
         if (usersResponse[0].role == "admin") {
           this.router.navigate(['/admin/users']);

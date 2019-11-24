@@ -10,6 +10,7 @@ export class AuthService {
     private isLoggedIn;
     private role: string = '';
     private isAdmin;
+    private actualUser: User;
 
     constructor(private http: HttpClient,
         private snackBar: MatSnackBar) {
@@ -42,10 +43,10 @@ export class AuthService {
 
 
 
-    login(role: string) {
-
+    login(user: User) {
+        this.actualUser= user;
         this.isLoggedIn = true;
-        this.role = role;
+        this.role = user.role;
         localStorage.setItem('isLoggedIn',  JSON.stringify(this.isLoggedIn));
 
         if (this.role=='admin'){
@@ -56,6 +57,8 @@ export class AuthService {
     }
 
     logout() {
+
+        this.actualUser=null;
         this.isLoggedIn = false;
         localStorage.removeItem('isLoggedIn');
 
@@ -98,4 +101,7 @@ export class AuthService {
         return this.http.put<any>(`http://localhost:3000/users/${user.id}`, user);
     }
 
+    getActualUserName(){
+        return this.actualUser.firstname;
+    }
 }

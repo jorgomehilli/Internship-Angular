@@ -22,6 +22,9 @@ export class NavComponent implements OnInit {
     return this.authService.getAdmin();
   }
 
+  getUser(){
+    return this.authService.getActualUserName();
+  }
 
   navLogout(){
     this.authService.logout();
