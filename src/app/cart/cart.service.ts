@@ -9,22 +9,46 @@ import { MatSnackBar } from '@angular/material';
 export class CartService {
     constructor(private http: HttpClient,
         private snackBar: MatSnackBar
-        ) { };
+    ) { };
 
-    getProducts() {
-        return this.http.get<Product[]>('http://localhost:3000/cart');
+    getProducts(userId: number) {
+        return this.http.get(`http://localhost:3000/users/${userId}/cart1`);
     }
 
-    addItemToCart(p: Product) {
-        this.http.post<Product>('http://localhost:3000/cart', p)
-            .subscribe(postData => { this.snackBar.open('You added '+ postData.name + ' to the shopping cart! ','',{ 
-                duration: 3000}); });
+    addItemToCart(p: Product, userId: number) {
+        this.http.post<Product>(`http://localhost:3000/cart1`, {
+            name: p.name,
+            price: p.price,
+            imgPath: p.imgPath,
+            p_id: p.id,
+            quantity: 1,
+            userId: userId,
+        })
+            .subscribe(postData => {
+                this.snackBar.open('You added ' + postData.name + ' to the shopping cart! ', '', {
+                    duration: 3000
+                });
+            });
 
     }
 
-    deleteItemFromCart(p: Product): Observable<void> {
-        return this.http.delete<void>(`http://localhost:3000/cart/${p.id}`);
+    deleteItemFromCart(id: number): Observable<void> {
+        return this.http.delete<void>(`http://localhost:3000/cart1/${id}`);
     }
 
+    modifyProduct(product: any, newQuantity: number){
+       return this.http.put(`http://localhost:3000/cart1/${product.id}`, {
+           name: product.name,
+           price: product.price,
+           imgPath: product.imgPath,
+           p_id: product.p_id,
+           quantity: newQuantity,
+           userId: product.userId,
+           id: product.id
+        });
+    }
 
+    // updateQuantity(id:number, quantity: number){
+    //     return this.http.put(`http://localhost:3000/cart1/${id}`);
+    // }
 }

@@ -9,6 +9,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
@@ -19,6 +20,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of users; let i = index">
+            <td style="font-weight: bold;"># {{ user.id}}</td>
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
             <td>{{user.email}}</td>
@@ -27,7 +29,8 @@
             <td><a (click)="deleteUser(i)" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></a></td>
           </tr>
         </tbody>
-        <button class="btn btn-primary" style="margin: 10px;" type="button" (click)="addUser()">Add User
-        </button>
       </table>
+      <hr>
+      <button class="animation" style="margin: 10px;" type="button" (click)="addUser()">New User
+      </button>
       </div>

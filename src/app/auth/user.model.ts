@@ -5,7 +5,8 @@ export class User {
     public lastname: string;
     public email: string;
     public password: string;
-    public role?: string = 'user';
+    public role?: string;
+    public cartId: number;
 
     constructor(firstname: string, lastname: string, email: string, password:string) {
         this.firstname = firstname;

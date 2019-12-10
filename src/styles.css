@@ -15,7 +15,8 @@ body{
 .table-style{
     margin-top: 20px;
     border:1px solid rgb(175, 175, 175);
-    background-color: rgb(255, 255, 255);
+	background-color: rgb(255, 255, 255);
+	padding: 20px;
 }
 
 .animation {
@@ -45,11 +46,11 @@ body{
 
 
 .whiteDiv{
-	background-color: rgb(247, 247, 247, 0.90);
+	background-color: rgb(248, 248, 248, 0.90);
 	padding-top: 10px;
-	padding-bottom: 20px;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-bottom: 40px;
+	padding-left: 50px;
+	padding-right: 50px;
 	margin-top: 80px;
 	border-radius: 0.25em;
 	border: solid 1px rgb(184, 184, 184);

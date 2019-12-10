@@ -3,9 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { map, filter } from 'rxjs/operators';
-import { UsersdialogComponent } from 'src/app/admin/usermanagement/usersdialog/usersdialog.component';
-import { User } from '../user.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',

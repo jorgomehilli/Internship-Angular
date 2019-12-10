@@ -7,10 +7,10 @@ import { MatSnackBar } from '@angular/material';
 @Injectable()
 export class AuthService {
 
-    private isLoggedIn;
+    public isLoggedIn = false;
     private role: string = '';
     private isAdmin;
-    private actualUser: User;
+    private actualUserId: number;
 
     constructor(private http: HttpClient,
         private snackBar: MatSnackBar) {
@@ -44,36 +44,40 @@ export class AuthService {
 
 
     login(user: User) {
-        this.actualUser= user;
+        this.actualUserId = user.id;
         this.isLoggedIn = true;
         this.role = user.role;
-        localStorage.setItem('isLoggedIn',  JSON.stringify(this.isLoggedIn));
+        localStorage.setItem('isLoggedIn', JSON.stringify(this.isLoggedIn));
+        localStorage.setItem('userId', JSON.stringify(user.id));
 
-        if (this.role=='admin'){
-            this.isAdmin=true;
-            localStorage.setItem('isAdmin',  JSON.stringify(this.isAdmin));
+
+        if (this.role == 'admin') {
+            this.isAdmin = true;
+            localStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
         }
 
     }
 
     logout() {
 
-        this.actualUser=null;
+        this.actualUserId = null;
         this.isLoggedIn = false;
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userId');
 
-        if(localStorage.getItem('isAdmin') !== null){
+        if (localStorage.getItem('isAdmin') !== null) {
             localStorage.removeItem('isAdmin');
-            this.isAdmin=false;
+            this.isAdmin = false;
         }
-        this.snackBar.open('Successfully logged out!','',{ 
-            duration: 3000});
+        this.snackBar.open('Successfully logged out!', '', {
+            duration: 3000
+        });
     }
 
     getState(): boolean {
-        if (localStorage.getItem('isLoggedIn') == null){
+        if (localStorage.getItem('isLoggedIn') == null) {
             this.isLoggedIn = false;
-        } else{
+        } else {
             this.isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
         }
         return this.isLoggedIn;
@@ -83,17 +87,17 @@ export class AuthService {
         return this.role;
     }
 
-    getAdmin():boolean{
-        if (localStorage.getItem('isAdmin') == null){
+    getAdmin(): boolean {
+        if (localStorage.getItem('isAdmin') == null) {
             this.isAdmin = false;
-        } else{
+        } else {
             this.isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
         }
-        
+
         return this.isAdmin;
     }
 
-    deleteUserFromDb(user: User) : Observable<void> {
+    deleteUserFromDb(user: User): Observable<void> {
         return this.http.delete<void>(`http://localhost:3000/users/${user.id}`);
     }
 
@@ -101,7 +105,10 @@ export class AuthService {
         return this.http.put<any>(`http://localhost:3000/users/${user.id}`, user);
     }
 
-    getActualUserName(){
-        return this.actualUser.firstname;
+    getActualUserId(){
+        
+        this.actualUserId = JSON.parse(localStorage.getItem('userId')) ;
+        return this.actualUserId;
     }
+
 }

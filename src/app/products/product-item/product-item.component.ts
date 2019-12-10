@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../product.model';
 import { CartService } from 'src/app/cart/cart.service';
 import { ProductsService } from '../products.service';
@@ -12,34 +12,42 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
-  @Output() productDeleted = new EventEmitter<Product>();
-  @Output() productChanged = new EventEmitter<Product>();
+  private cartProducts: any[] = [];
 
   constructor(private cartService: CartService,
-     private productService: ProductsService,
-     private authService:AuthService,
-     private snackBar: MatSnackBar) { }
+    private productService: ProductsService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar) { }
+
   ngOnInit() {
   }
 
   addToCart() {
-    this.cartService.addItemToCart(this.product);
+
+    this.cartService.getProducts(this.authService.getActualUserId()).subscribe((cartProducts: Product[]) => {
+      this.cartProducts = cartProducts;
+      console.log(this.cartProducts);
+      for(let cartElement of this.cartProducts){
+        if(cartElement.p_id == this.product.id){
+          this.snackBar.open('This item has already been added!', 'OK',);
+          return;
+        } 
+
+      }
+
+      this.cartService.addItemToCart(this.product,
+        this.authService.getActualUserId());
+
+    });
+
   }
 
-  onRemoveProduct() {
-    this.productDeleted.emit(this.product);
 
-  }
-
-  onUpdateProduct() {
-    this.productChanged.emit(this.product);
-  }
-
-  productGetLoginState():boolean{
+  productGetLoginState(): boolean {
     return this.authService.getState();
   }
 
-  getAuthRole(){
+  getAuthRole() {
     return this.authService.getRole();
   }
 }

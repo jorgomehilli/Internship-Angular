@@ -44,7 +44,7 @@ import { UsersdialogComponent } from './admin/usermanagement/usersdialog/usersdi
   ],
 
   entryComponents: [ProductsdialogComponent,
-  UsersdialogComponent],
+    UsersdialogComponent],
 
   imports: [
     BrowserModule,
@@ -55,7 +55,13 @@ import { UsersdialogComponent } from './admin/usermanagement/usersdialog/usersdi
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [CartService, AuthService, AuthGuard, AdminGuard, ProductsService],
+  providers: [
+    CartService,
+    AuthService,
+    AuthGuard,
+    AdminGuard,
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
