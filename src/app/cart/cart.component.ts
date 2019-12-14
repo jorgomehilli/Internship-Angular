@@ -11,8 +11,7 @@ import { AuthService } from '../auth/auth.service';
 
 export class CartComponent implements OnInit {
   private products: any[] = [];
-  private sum: any = 0;
-  newQuantity: number;
+  private newQuantity: number;
 
   constructor(private cartService: CartService,
     private authService: AuthService,
@@ -66,18 +65,6 @@ export class CartComponent implements OnInit {
     error => { console.log(error); }
 
   }
-
-  // Purchase() {
-
-  //   for (let i = 0; i < this.products.length; i++) {
-
-  //     this.cartService.deleteItemFromCart(this.products[i]).subscribe(() => {
-  //     });
-  //   }
-  //   this.products = [];
-  //   this.snackBar.open('Success!', '', { duration: 3000 });
-
-  // }
 
   isEmpty(): boolean {
 

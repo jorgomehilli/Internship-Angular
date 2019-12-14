@@ -6,20 +6,32 @@
             <label for="first_name">First Name:</label>
             <input type="text" class="form-control" placeholder="Enter First Name" name="first_name"
                 formControlName="firstname">
+                <span
+                *ngIf="!userForm.get('firstname').valid && userForm.get('firstname').touched"
+                 class="help-block">Please enter a valid name!</span>
         </div>
         <div class="form-group">
             <label for="last_name">Last Name:</label>
             <input type="text" class="form-control" placeholder="Enter Last Name" name="last_name"
                 formControlName="lastname">
+                <span
+                *ngIf="!userForm.get('lastname').valid && userForm.get('lastname').touched"
+                 class="help-block">Please enter a valid lastname!</span>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" class="form-control" placeholder="Enter Email" name="email" formControlName="email">
+            <span
+                *ngIf="!userForm.get('email').valid && userForm.get('email').touched"
+                 class="help-block">Please enter a valid email!</span>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" class="form-control" placeholder="Enter Password" name="password"
                 formControlName="password">
+                <span
+                *ngIf="!userForm.get('password').valid && userForm.get('password').touched"
+                 class="help-block">Please enter a valid password!</span>
         </div>
         <div class="form-group">
             <label for="role">Role: </label>

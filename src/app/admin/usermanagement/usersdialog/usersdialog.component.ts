@@ -25,8 +25,8 @@ export class UsersdialogComponent implements OnInit {
       this.userForm = new FormGroup({
         'firstname': new FormControl(this.user.firstname, Validators.required),
         'lastname': new FormControl(this.user.lastname, Validators.required),
-        'email': new FormControl(this.user.email, Validators.required),
-        'password': new FormControl(this.user.password, Validators.required),
+        'email': new FormControl(this.user.email, Validators.email),
+        'password': new FormControl(this.user.password, Validators.minLength(6)),
         'role': new FormControl(this.user.role, Validators.required),
         'id': new FormControl(this.user.id, Validators.required)
       });
@@ -37,8 +37,8 @@ export class UsersdialogComponent implements OnInit {
       this.userForm = new FormGroup({
         'firstname': new FormControl(null, Validators.required),
         'lastname': new FormControl(null, Validators.required),
-        'email': new FormControl(null, Validators.required),
-        'password': new FormControl(null, Validators.required),
+        'email': new FormControl(null, Validators.email),
+        'password': new FormControl(null, Validators.minLength(6)),
         'role': new FormControl(null, Validators.required),
         'id': new FormControl(null, Validators.required)
 
@@ -48,6 +48,8 @@ export class UsersdialogComponent implements OnInit {
   }
 
   onSubmit() {
+
+    if(!this.userForm.valid) return;
 
     if (!this.isUpdate) {
       this.authService.signUp(this.userForm.value).subscribe((data) => {

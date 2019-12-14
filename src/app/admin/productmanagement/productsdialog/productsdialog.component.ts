@@ -45,6 +45,8 @@ export class ProductsdialogComponent implements OnInit {
 
   onSubmit() {
 
+    if(!this.productEditForm.valid) return;
+
     if (!this.isUpdate) {
       this.productsService.addNewProduct(this.productEditForm.value).subscribe(() => {
         this.matDialogRef.close(true);

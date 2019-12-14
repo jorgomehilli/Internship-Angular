@@ -7,6 +7,9 @@ import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class CartService {
+
+    private newQuantity;
+
     constructor(private http: HttpClient,
         private snackBar: MatSnackBar
     ) { };
@@ -36,19 +39,17 @@ export class CartService {
         return this.http.delete<void>(`http://localhost:3000/cart1/${id}`);
     }
 
-    modifyProduct(product: any, newQuantity: number){
-       return this.http.put(`http://localhost:3000/cart1/${product.id}`, {
-           name: product.name,
-           price: product.price,
-           imgPath: product.imgPath,
-           p_id: product.p_id,
-           quantity: newQuantity,
-           userId: product.userId,
-           id: product.id
+    modifyProduct(product: any, newQuantity: number) {
+
+        if(newQuantity > 5) return;
+        return this.http.put(`http://localhost:3000/cart1/${product.id}`, {
+            name: product.name,
+            price: product.price,
+            imgPath: product.imgPath,
+            p_id: product.p_id,
+            quantity: newQuantity,
+            userId: product.userId,
+            id: product.id
         });
     }
-
-    // updateQuantity(id:number, quantity: number){
-    //     return this.http.put(`http://localhost:3000/cart1/${id}`);
-    // }
 }

@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material';
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   private cartProducts: any[] = [];
+  private newQuantity;
 
   constructor(private cartService: CartService,
     private productService: ProductsService,
@@ -27,11 +28,16 @@ export class ProductItemComponent implements OnInit {
     this.cartService.getProducts(this.authService.getActualUserId()).subscribe((cartProducts: Product[]) => {
       this.cartProducts = cartProducts;
       console.log(this.cartProducts);
-      for(let cartElement of this.cartProducts){
-        if(cartElement.p_id == this.product.id){
-          this.snackBar.open('This item has already been added!', 'OK',);
+      for (let cartElement of this.cartProducts) {
+        if (cartElement.p_id == this.product.id) {
+          this.newQuantity = cartElement.quantity + 1;
+          this.cartService.modifyProduct(cartElement, this.newQuantity).subscribe((response) => {
+            console.log(response);
+          });
+          this.snackBar.open('Added one more '+this.product.name+' to the cart!', 'OK');
           return;
-        } 
+
+        }
 
       }
 
