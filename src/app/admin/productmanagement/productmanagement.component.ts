@@ -52,7 +52,7 @@ export class ProductmanagementComponent implements OnInit {
   deleteProduct(index: number){
     this.productService.deleteProduct(this.products[index]).subscribe(()=>{
       this.products.splice(index, 1);
-      this.snackBar.open('Product deleted successfully! ', '', {duration:3000})
+      this.snackBar.open('Product deleted successfully! ', '', {duration: 3000})
     },
     error=>{console.log(error);});
   }

@@ -11,6 +11,7 @@ export class AuthService {
     private role: string = '';
     private isAdmin;
     private actualUserId: number;
+    private username: string;
 
     constructor(private http: HttpClient,
         private snackBar: MatSnackBar) {
@@ -49,6 +50,7 @@ export class AuthService {
         this.role = user.role;
         localStorage.setItem('isLoggedIn', JSON.stringify(this.isLoggedIn));
         localStorage.setItem('userId', JSON.stringify(user.id));
+        localStorage.setItem('username', JSON.stringify(user.firstname));
 
 
         if (this.role == 'admin') {
@@ -64,6 +66,7 @@ export class AuthService {
         this.isLoggedIn = false;
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('userId');
+        localStorage.removeItem('username');
 
         if (localStorage.getItem('isAdmin') !== null) {
             localStorage.removeItem('isAdmin');
@@ -110,5 +113,8 @@ export class AuthService {
         this.actualUserId = JSON.parse(localStorage.getItem('userId')) ;
         return this.actualUserId;
     }
-
+    getUsername(){
+        this.username = localStorage.getItem('username');
+        return this.username;
+    }
 }

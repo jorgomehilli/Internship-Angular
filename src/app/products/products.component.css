@@ -27,3 +27,11 @@
 	background-color: transparent;
 	transition: 0.5s;
 }
+.bookingdetails{
+	padding: 20px;
+	background-color: white;
+	color: black;
+	width: auto;
+	margin-top: 20px;
+	overflow: hidden;
+}

@@ -14,13 +14,20 @@
         <li *ngIf="!getAdminState()" routerLinkActive="active"><a routerLink="/products" class="smoothScroll">OUR
             PRODUCTS</a></li>
         <li *ngIf="!getAdminState()" routerLinkActive="active"><a routerLink="/cart" class="smoothScroll"> CART <span
-              class="glyphicon glyphicon-shopping-cart"></span></a></li>
+              class="glyphicon glyphicon-shopping-cart"></span></a></li> 
         <li *ngIf="getAdminState()" routerLinkActive="active"><a routerLink="/admin/users"
             class="smoothScroll">USERS</a></li>
         <li *ngIf="getAdminState()" routerLinkActive="active"><a routerLink="/admin/productmanagement"
             class="smoothScroll">PRODUCTS</a></li>
-        <li *ngIf="getLoginState()"><a (click)="navLogout()" routerLink="/home"> LOGOUT <span
-              class="glyphicon glyphicon-off"></span></a></li>
+              <li *ngIf="getLoginState()" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
+                  HELLO {{ getUsername().toUpperCase() }}
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a (click)="navLogout()" routerLink="/home"> LOGOUT <span style="color: rgb(194, 99, 99);"
+                    class="glyphicon glyphicon-off"></span></a></li>
+                </ul>
+              </li>
         <li *ngIf="!getLoginState()" routerLinkActive="active"><a routerLink="/login"> Sign In <span
               class="glyphicon glyphicon-user"></span></a></li>
       </ul>

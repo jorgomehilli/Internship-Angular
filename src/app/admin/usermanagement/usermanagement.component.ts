@@ -12,6 +12,7 @@ import { UsersdialogComponent } from './usersdialog/usersdialog.component';
 export class UsermanagementComponent implements OnInit {
 
   private users: User[] = [];
+  searchText: string;
 
   constructor(private authService: AuthService,
     private snackBar: MatSnackBar,

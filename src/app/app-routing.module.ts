@@ -22,7 +22,7 @@ const routes: Routes = [
     { path: 'sign-up', component: SignupComponent },
     { path: 'admin', canActivate: [AdminGuard], component: AdminComponent, children:[
         {path:'users', component: UsermanagementComponent},
-        {path:'productmanagement', component: ProductmanagementComponent}
+        {path:'productmanagement', component: ProductmanagementComponent}      
     ] }
 ];
 

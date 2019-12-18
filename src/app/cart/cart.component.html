@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="table-style">
-    <table *ngIf="!isEmpty()" class="table table-hover">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col"><b>#</b></th>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products; let i = index">
+        <tr *ngFor="let product of products ; let i = index">
           <td><b>{{i+1}}</b></td>
           <td>{{ product.name }}</td>
           <td>€ {{ product.price }}</td>
@@ -35,5 +35,7 @@
       <strong>Info!</strong> Your cart is empty!
     </div>
     <hr>
-    <button *ngIf="!isEmpty()" (click)="Purchase()" class="animation" style="margin: 10px;">Purchase</button>
+<div>
+  <button (click)="Checkout()" class="animation" style="margin: 10px;">Checkout</button>
+</div>
   </div>

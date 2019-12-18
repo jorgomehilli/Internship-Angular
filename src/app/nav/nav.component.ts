@@ -8,6 +8,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class NavComponent implements OnInit {
 
+  private username: string;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -25,5 +27,10 @@ export class NavComponent implements OnInit {
 
   navLogout(){
     this.authService.logout();
+  }
+
+  getUsername(){
+  return this.username = this.authService.getUsername();
+    
   }
 }

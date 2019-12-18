@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
 import { AuthService } from '../auth/auth.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { CartdialogComponent} from '../cart/cartdialog/cartdialog.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,15 +15,21 @@ import { AuthService } from '../auth/auth.service';
 export class CartComponent implements OnInit {
   private products: any[] = [];
   private newQuantity: number;
+  private products1: Observable <{ cartProducts: any []}>;
 
   constructor(private cartService: CartService,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
+    // private store: Store <{cartStore: {cartProducts: any[]}}>
   ) { };
 
   ngOnInit() {
+
+    // this.products1 = this.store.select('cartStore');
+
     this.cartService.getProducts(this.authService.getActualUserId())
-      .subscribe((recieveData: any) => {
+      .subscribe((recieveData: any[]) => {
         this.products = recieveData;
         console.log(this.products);
       });
@@ -74,5 +83,17 @@ export class CartComponent implements OnInit {
     else {
       return false;
     }
+  }
+  
+  Checkout(products: any[]){
+    let dialogRef = this.dialog.open(CartdialogComponent, {
+      width: '40%',
+      data: products
+    });
+    
+    dialogRef.afterClosed().subscribe(changed => {
+      if (changed) {
+      }
+    });
   }
 }

@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { Store } from '@ngrx/store';
+
 
 
 @Injectable()
 export class CartService {
 
-    private newQuantity;
-
     constructor(private http: HttpClient,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) { };
 
     getProducts(userId: number) {
@@ -52,4 +52,5 @@ export class CartService {
             id: product.id
         });
     }
+
 }

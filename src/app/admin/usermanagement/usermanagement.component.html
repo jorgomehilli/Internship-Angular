@@ -5,11 +5,16 @@
       <h1 class="top-text"><span style="color: rgb(21, 149, 231) ;">U</span>sers</h1>
       </div>
     </div>
+<div class="form-group form-inline" style=" margin-top: 20px;">
+  <label for="search">Search Users:</label>
+  <input  [(ngModel)] = "searchText" class="form-control" type="text" 
+  style="width: 30%; margin-left: 10px;" placeholder="Search By Name" id="search" >
+</div>    
     <div class="table-style">
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col"></th>
+            <th scope="col">#</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
@@ -19,8 +24,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users; let i = index">
-            <td style="font-weight: bold;"># {{ user.id}}</td>
+          <tr *ngFor="let user of users | filter: searchText; let i = index ">
+            <td style="font-weight: bold;">{{i+1}}</td>
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
             <td>{{user.email}}</td>
@@ -33,4 +38,5 @@
       <hr>
       <button class="animation" style="margin: 10px;" type="button" (click)="addUser()">New User
       </button>
-      </div>
+      </div
+      >

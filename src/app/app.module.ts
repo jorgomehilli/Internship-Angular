@@ -24,6 +24,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { ProductsdialogComponent } from './admin/productmanagement/productsdialog/productsdialog.component';
 import { UsersdialogComponent } from './admin/usermanagement/usersdialog/usersdialog.component';
+import { StoreModule } from '@ngrx/store';
+import { FilterPipe } from './admin/usermanagement/filter.pipe';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { CartdialogComponent } from './cart/cartdialog/cartdialog.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +45,15 @@ import { UsersdialogComponent } from './admin/usermanagement/usersdialog/usersdi
     UsermanagementComponent,
     ProductmanagementComponent,
     ProductsdialogComponent,
-    UsersdialogComponent
+    UsersdialogComponent,
+    FilterPipe,
+    CartdialogComponent
   ],
 
   entryComponents: [ProductsdialogComponent,
-    UsersdialogComponent],
+    UsersdialogComponent,
+    CartdialogComponent],
+
 
   imports: [
     BrowserModule,
@@ -53,7 +62,9 @@ import { UsersdialogComponent } from './admin/usermanagement/usersdialog/usersdi
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    // StoreModule.forRoot({cartStore: cartReducer}),
+    StoreDevtoolsModule
   ],
   providers: [
     CartService,
