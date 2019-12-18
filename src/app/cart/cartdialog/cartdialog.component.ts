@@ -16,7 +16,7 @@ export class CartdialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+console.log(this.products);
   }
 
 onClose(){

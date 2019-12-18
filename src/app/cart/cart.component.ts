@@ -85,10 +85,10 @@ export class CartComponent implements OnInit {
     }
   }
   
-  Checkout(products: any[]){
+  Checkout(){
     let dialogRef = this.dialog.open(CartdialogComponent, {
       width: '40%',
-      data: products
+      data: this.products
     });
     
     dialogRef.afterClosed().subscribe(changed => {

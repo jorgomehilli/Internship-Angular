@@ -15,7 +15,7 @@ export class ProductmanagementComponent implements OnInit {
 
   constructor(private productService: ProductsService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar ) { }
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.productService.recieveData().subscribe((products:Product[])=>{
