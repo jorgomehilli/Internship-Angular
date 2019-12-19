@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
 import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
 import { AuthService } from '../auth/auth.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartdialogComponent} from '../cart/cartdialog/cartdialog.component';
+import { AppState, initialAppState } from '../store/state/app.state';
+import { GetItems } from '../store/actions/cart.actions';
+import { initialCartState } from '../store/state/cart.state';
+import { selectUserList } from '../store/selectors/cart.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -13,30 +17,30 @@ import { CartdialogComponent} from '../cart/cartdialog/cartdialog.component';
 })
 
 export class CartComponent implements OnInit {
-  private products: any[] = [];
   private newQuantity: number;
-  private products1: Observable <{ cartProducts: any []}>;
+  // private products1: Observable <AppState>;
+  products$ = this.store.pipe(select(selectUserList));
 
   constructor(private cartService: CartService,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
-    // private store: Store <{cartStore: {cartProducts: any[]}}>
+    public dialog: MatDialog,
+    private store: Store <AppState>
   ) { };
 
   ngOnInit() {
 
-    // this.products1 = this.store.select('cartStore');
+    this.store.dispatch(new GetItems);
 
-    this.cartService.getProducts(this.authService.getActualUserId())
-      .subscribe((recieveData: any[]) => {
-        this.products = recieveData;
-        console.log(this.products);
-      });
+    // this.cartService.getProducts(this.authService.getActualUserId())
+    //   .subscribe((recieveData: any[]) => {
+    //     this.products = recieveData;
+    //     console.log(this.products);
+    //   });
   }
 
   deleteItem(index: number) {
-    this.cartService.deleteItemFromCart(this.products[index].id)
+    /* this.cartService.deleteItemFromCart(this.products[index].id)
       .subscribe(() => {
         this.products.splice(index, 1);
         this.snackBar.open('Successfully removed item from cart!', '', {
@@ -45,7 +49,7 @@ export class CartComponent implements OnInit {
       },
         error => {
           console.log(error);
-        });
+        }); */
 
   }
 
@@ -75,18 +79,18 @@ export class CartComponent implements OnInit {
 
   }
 
-  isEmpty(): boolean {
+  // isEmpty(): boolean {
 
-    if (this.products.length == 0) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+  //   /* if (this.products.length == 0) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false;
+  //   } */
+  // }
   
   Checkout(){
-    let dialogRef = this.dialog.open(CartdialogComponent, {
+    /* let dialogRef = this.dialog.open(CartdialogComponent, {
       width: '40%',
       data: this.products
     });
@@ -94,6 +98,6 @@ export class CartComponent implements OnInit {
     dialogRef.afterClosed().subscribe(changed => {
       if (changed) {
       }
-    });
+    }); */
   }
 }

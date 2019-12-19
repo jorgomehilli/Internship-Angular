@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products ; let i = index">
+        <tr *ngFor="let product of products$ | async; let i= index">
           <td><b>{{i+1}}</b></td>
           <td>{{ product.name }}</td>
           <td>€ {{ product.price }}</td>
@@ -31,9 +31,9 @@
         </tr>
       </tbody>
     </table>
-    <div *ngIf="isEmpty()" class="alert alert-info text-center" style="margin: 20px;">
+    <!-- <div *ngIf="isEmpty()" class="alert alert-info text-center" style="margin: 20px;">
       <strong>Info!</strong> Your cart is empty!
-    </div>
+    </div> -->
     <hr>
 <div>
   <button (click)="Checkout()" class="animation" style="margin: 10px;">Checkout</button>

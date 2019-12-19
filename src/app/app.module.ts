@@ -29,6 +29,8 @@ import { FilterPipe } from './admin/usermanagement/filter.pipe';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { CartdialogComponent } from './cart/cartdialog/cartdialog.component';
+import { appReducers } from './store/reducers/app.reducer';
+import { CartEffects } from './store/effects/cart.effects';
 
 @NgModule({
   declarations: [
@@ -63,8 +65,9 @@ import { CartdialogComponent } from './cart/cartdialog/cartdialog.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    // StoreModule.forRoot({cartStore: cartReducer}),
-    StoreDevtoolsModule
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([CartEffects]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     CartService,

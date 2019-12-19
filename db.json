@@ -92,7 +92,7 @@
       "price": "4.99",
       "imgPath": "https://www.meijer.com/content/dam/meijer/product/0004/12/5082/59/0004125082595_2_A1C1_1200.png",
       "p_id": 3,
-      "quantity": 1,
+      "quantity": 4,
       "userId": 5,
       "id": 14
     },
@@ -101,7 +101,7 @@
       "price": "14.99",
       "imgPath": "https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png",
       "p_id": 1,
-      "quantity": 2,
+      "quantity": 5,
       "userId": 5,
       "id": 15
     },
@@ -110,7 +110,7 @@
       "price": "9.60",
       "imgPath": "https://static.wixstatic.com/media/04f121_1ade7959184d417c9fa6572f1c6b2607~mv2.png/v1/fill/w_576,h_576,al_c,lg_1/04f121_1ade7959184d417c9fa6572f1c6b2607~mv2.png",
       "p_id": 2,
-      "quantity": 1,
+      "quantity": 3,
       "userId": 5,
       "id": 16
     },
@@ -119,7 +119,7 @@
       "price": "14.99",
       "imgPath": "https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png",
       "p_id": 1,
-      "quantity": 2,
+      "quantity": 4,
       "userId": 3,
       "id": 17
     },
