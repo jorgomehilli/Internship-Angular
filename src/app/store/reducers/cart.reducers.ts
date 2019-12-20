@@ -13,6 +13,20 @@ export const cartReducers = (
           cartItems: action.payload
         };
       }
+      case ECartActions.DeleteItem:{
+        return {
+          ...state,
+          cartItems: state.cartItems.filter((cartItem, index)=>{
+            return index !== action.payload;
+          })
+        }
+      };
+      case ECartActions.AddItem:{
+        return {
+          ...state,
+          cartItems: [state.cartItems, action.payload]
+        }
+      }
       default:
            return state;
     };

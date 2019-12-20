@@ -6,7 +6,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartdialogComponent} from '../cart/cartdialog/cartdialog.component';
 import { AppState, initialAppState } from '../store/state/app.state';
-import { GetItems } from '../store/actions/cart.actions';
+import { GetItems, DeleteItem } from '../store/actions/cart.actions';
 import { initialCartState } from '../store/state/cart.state';
 import { selectUserList } from '../store/selectors/cart.selectors';
 
@@ -29,29 +29,23 @@ export class CartComponent implements OnInit {
   ) { };
 
   ngOnInit() {
-
-    this.store.dispatch(new GetItems);
-
-    // this.cartService.getProducts(this.authService.getActualUserId())
-    //   .subscribe((recieveData: any[]) => {
-    //     this.products = recieveData;
-    //     console.log(this.products);
-    //   });
+    this.store.dispatch( new GetItems );
   }
 
-  deleteItem(index: number) {
-    /* this.cartService.deleteItemFromCart(this.products[index].id)
-      .subscribe(() => {
-        this.products.splice(index, 1);
-        this.snackBar.open('Successfully removed item from cart!', '', {
-          duration: 3000
-        });
-      },
-        error => {
-          console.log(error);
-        }); */
+  // deleteItem(index: number) {
 
-  }
+  //    this.cartService.deleteItemFromCart(this.products[index].id)
+  //     .subscribe(() => {
+  //       this.store.dispatch(new DeleteItem(index))
+  //       this.snackBar.open('Successfully removed item from cart!', '', {
+  //         duration: 3000
+  //       });
+  //     },
+  //       error => {
+  //         console.log(error);
+  //       }); 
+
+  // }
 
   incrementQuantity(product: any) {
 

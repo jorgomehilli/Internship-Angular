@@ -19,19 +19,19 @@ export class CartService {
     }
 
     addItemToCart(p: Product, userId: number) {
-        this.http.post<Product>(`http://localhost:3000/cart1`, {
+       return this.http.post<Product>(`http://localhost:3000/cart1`, {
             name: p.name,
             price: p.price,
             imgPath: p.imgPath,
             p_id: p.id,
             quantity: 1,
             userId: userId,
-        })
-            .subscribe(postData => {
-                this.snackBar.open('You added ' + postData.name + ' to the shopping cart! ', '', {
-                    duration: 3000
-                });
-            });
+        });
+            // .subscribe(postData => {
+            //     this.snackBar.open('You added ' + postData.name + ' to the shopping cart! ', '', {
+            //         duration: 3000
+            //     });
+            // });
 
     }
 
