@@ -18,8 +18,8 @@ import { selectUserList } from '../store/selectors/cart.selectors';
 
 export class CartComponent implements OnInit {
   private newQuantity: number;
-  // private products1: Observable <AppState>;
-  products$ = this.store.pipe(select(selectUserList));
+  private products: any[] = [];
+  // products$ = this.store.pipe(select(selectUserList));
 
   constructor(private cartService: CartService,
     private authService: AuthService,
@@ -29,23 +29,29 @@ export class CartComponent implements OnInit {
   ) { };
 
   ngOnInit() {
-    this.store.dispatch( new GetItems );
+    // this.store.dispatch( new GetItems );
+    this.cartService.getProducts(this.authService.getActualUserId())
+    .subscribe((recieveData: any[]) => {
+      this.products = recieveData;
+      console.log(this.products);
+    });
   }
 
-  // deleteItem(index: number) {
+  deleteItem(index: number) {
 
-  //    this.cartService.deleteItemFromCart(this.products[index].id)
-  //     .subscribe(() => {
-  //       this.store.dispatch(new DeleteItem(index))
-  //       this.snackBar.open('Successfully removed item from cart!', '', {
-  //         duration: 3000
-  //       });
-  //     },
-  //       error => {
-  //         console.log(error);
-  //       }); 
+     this.cartService.deleteItemFromCart(this.products[index].id)
+      .subscribe(() => {
+        // this.store.dispatch(new DeleteItem(index))
+        this.products.splice(index, 1);
+        this.snackBar.open('Successfully removed item from cart!', '', {
+          duration: 3000
+        });
+      },
+        error => {
+          console.log(error);
+        }); 
 
-  // }
+  }
 
   incrementQuantity(product: any) {
 
@@ -73,25 +79,31 @@ export class CartComponent implements OnInit {
 
   }
 
-  // isEmpty(): boolean {
+  isEmpty(): boolean {
 
-  //   /* if (this.products.length == 0) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   } */
-  // }
+     if (this.products.length == 0) {
+      return true;
+    }
+    else {
+      return false;
+    } 
+  }
   
   Checkout(){
-    /* let dialogRef = this.dialog.open(CartdialogComponent, {
-      width: '40%',
+     let dialogRef = this.dialog.open(CartdialogComponent, {
+      width: '45%',
       data: this.products
     });
     
-    dialogRef.afterClosed().subscribe(changed => {
+    dialogRef.afterClosed().subscribe((changed: Boolean) => {
       if (changed) {
+        for(let cartEl of this.products){          
+          this.cartService.deleteItemFromCart(cartEl.id).subscribe(()=>{
+          }, error =>{console.log(error)});
+        }
+        this.snackBar.open('Successfully placed order !', '', { duration:3000 });
+        this.products = [];
       }
-    }); */
+    }); 
   }
 }

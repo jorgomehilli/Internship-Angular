@@ -19,7 +19,7 @@
 .background{
 	margin-top: 50px;
     background-image: url(../../assets/img/pharmacist.jpg);
-	height: 670px; 
+	height: 100%; 
 	width: 100%;
 	background-repeat: no-repeat;
 	background-size: cover;  

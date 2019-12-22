@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { User } from 'src/app/auth/user.model';
 import { Product } from 'src/app/products/product.model';
+
 @Pipe({
   name: 'filter'
 })

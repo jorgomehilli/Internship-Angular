@@ -7,6 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar, MatDialog } from '@angular/
   styleUrls: ['./cartdialog.component.css']
 })
 export class CartdialogComponent implements OnInit {
+  private total: number = 0;
 
   constructor(@Inject(MAT_DIALOG_DATA) public products: any[],
     public dialog: MatDialog,
@@ -16,10 +17,19 @@ export class CartdialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-console.log(this.products);
+    this.getTotal();
   }
 
 onClose(){
     this.matDialogRef.close(false);
 }
+onPurchase(){
+  this.matDialogRef.close(true);
+}
+getTotal(){
+  for(let cartEl of this.products){
+    this.total = this.total + cartEl.quantity* cartEl.price;
+  }
+}
+
 }

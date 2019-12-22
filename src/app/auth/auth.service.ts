@@ -111,6 +111,7 @@ export class AuthService {
     getActualUserId(){
         
         this.actualUserId = JSON.parse(localStorage.getItem('userId')) ;
+        if(this.getActualUserId !== null)
         return this.actualUserId;
     }
     getUsername(){

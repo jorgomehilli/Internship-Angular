@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(){
-     this.store.dispatch(new GetItems);
+    //  this.store.dispatch(new GetItems);
 
   }
 }

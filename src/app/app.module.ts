@@ -31,6 +31,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CartdialogComponent } from './cart/cartdialog/cartdialog.component';
 import { appReducers } from './store/reducers/app.reducer';
 import { CartEffects } from './store/effects/cart.effects';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CartEffects } from './store/effects/cart.effects';
     ProductsdialogComponent,
     UsersdialogComponent,
     FilterPipe,
-    CartdialogComponent
+    CartdialogComponent,
+    FooterComponent
   ],
 
   entryComponents: [ProductsdialogComponent,

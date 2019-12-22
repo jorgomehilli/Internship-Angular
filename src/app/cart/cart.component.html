@@ -1,4 +1,5 @@
-<div class="container whiteDiv">
+<div class="container">
+<div class="whiteDiv">
   <div>
     <div style="border-bottom: dotted 2px rgb(175, 175, 175);">
       <h1 class="top-text"><span style="color: rgb(21, 149, 231) ;">Y</span>our Cart</h1>
@@ -16,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products$ | async; let i= index">
+        <tr *ngFor="let product of products; let i= index">
           <td><b>{{i+1}}</b></td>
           <td>{{ product.name }}</td>
           <td>€ {{ product.price }}</td>
@@ -26,16 +27,21 @@
             <a (click)="incrementQuantity(product)"
             style="cursor: pointer;"><span class="glyphicon glyphicon-plus"></span></a>
           </td>
-          <td><a (click)="deleteItem(i)" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></a>
+          <td><a (click)="deleteItem(i)" style="cursor: pointer;"><span
+             class="glyphicon glyphicon-trash red"></span
+            ></a>
           </td>
         </tr>
       </tbody>
     </table>
-    <!-- <div *ngIf="isEmpty()" class="alert alert-info text-center" style="margin: 20px;">
+    <div *ngIf="isEmpty()" class="alert alert-info text-center" style="margin: 20px;">
       <strong>Info!</strong> Your cart is empty!
-    </div> -->
+    </div>
     <hr>
 <div>
-  <button (click)="Checkout()" class="animation" style="margin: 10px;">Checkout</button>
+  <button *ngIf="!isEmpty()" (click)="Checkout()" class="animation" style="margin: 10px;">Checkout</button>
 </div>
   </div>
+  </div>
+<app-footer></app-footer>
+</div>

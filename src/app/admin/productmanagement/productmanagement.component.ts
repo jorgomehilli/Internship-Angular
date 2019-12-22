@@ -12,7 +12,7 @@ import { ProductsdialogComponent } from './productsdialog/productsdialog.compone
 export class ProductmanagementComponent implements OnInit {
 
   private products: Product[];
-
+  
   constructor(private productService: ProductsService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar) { }

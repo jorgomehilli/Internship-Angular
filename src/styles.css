@@ -55,9 +55,11 @@ body{
 	margin-top: 80px;
 	border-radius: 0.25em;
 	border: solid 1px rgb(184, 184, 184);
-
+	box-shadow: 4px 4px 20px rgb(68, 68, 68);
 }
-
+.red{
+	color: rgb(192, 36, 36);
+}
   
 
 html, body { height: 100%; }
