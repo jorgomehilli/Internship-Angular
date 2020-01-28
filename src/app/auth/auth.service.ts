@@ -17,8 +17,8 @@ export class AuthService {
         private snackBar: MatSnackBar) {
     }
 
-    recieveUsers(): Observable<User[]> {
-        return this.http.get<User[]>('http://localhost:3000/users');
+    recieveUsers(): Observable< User[] > {
+        return this.http.get< User[] >('http://localhost:3000/users');
     }
 
     signUp(formValue: any) {

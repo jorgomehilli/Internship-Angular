@@ -51,6 +51,14 @@
       "password": "12345678",
       "role": "user",
       "id": 5
+    },
+    {
+      "firstname": "Jorgo",
+      "lastname": "Mehilli",
+      "email": "kristibeshello@fshn.com6",
+      "password": "12345678",
+      "role": "user",
+      "id": 6
     }
   ],
   "cart1": [
@@ -77,9 +85,18 @@
       "price": "14.99",
       "imgPath": "https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png",
       "p_id": 1,
-      "quantity": 2,
+      "quantity": 1,
+      "userId": 6,
+      "id": 4
+    },
+    {
+      "name": "Ranital",
+      "price": "14.99",
+      "imgPath": "https://img-new.cgtrader.com/items/771790/6b0a1548cb/medicine-pills-package-3d-model-rigged-obj-mtl-3ds-fbx-blend-dae.png",
+      "p_id": 1,
+      "quantity": 1,
       "userId": 3,
-      "id": 3
+      "id": 5
     }
   ],
   "history": []
